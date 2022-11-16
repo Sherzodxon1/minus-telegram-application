@@ -18,6 +18,7 @@ import javax.persistence.Table;
 @Table(name = "users")
 
 public class User extends BaseEntity {
+
     @Column(name = "first_name")
     private String firstName;
 
@@ -28,10 +29,10 @@ public class User extends BaseEntity {
     private String userName;
 
     @Column(name = "phone",unique = true)
-    private Integer phone;
+    private String phone;
 
     @Column(name = "password")
-    private Integer password;
+    private String password;
 
     @Column(name = "bio")
     private String bio;

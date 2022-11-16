@@ -5,7 +5,7 @@ public interface BaseURI {
     String V1 = "/v1";
 
     String DASHBOARD = "/dashboard";
-    String CATEGORY = "/category";
+    String USER = "/user";
 
     String FILE = "/file";
     String GET = "/get";

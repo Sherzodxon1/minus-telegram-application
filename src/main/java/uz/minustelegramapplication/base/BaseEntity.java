@@ -24,7 +24,11 @@ public abstract class BaseEntity implements Serializable {
     protected Integer id;
 
     @Column(name = "uuid")
-    protected UUID uuid;
+    protected UUID uuid = UUID.randomUUID();
+
+    @Column(name = "active", columnDefinition = "NUMERIC default 1")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    protected boolean active;
 
 
 

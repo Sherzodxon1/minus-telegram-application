@@ -5,11 +5,15 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 @ToString
-public class CreateUserDTO {
+
+public class UserUpdateDTO {
+    @NotNull(message = "User id is required!!!")
+    private Integer id;
 
     @NotBlank(message = "First name is required !!!")
     private String firstName;

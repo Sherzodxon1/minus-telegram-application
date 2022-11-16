@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,11 +19,15 @@ public class UserDTO {
 
     private String lastName;
 
-    private Integer phone;
+    private String phone;
 
     private String userName;
 
-    private Integer password;
+    private String password;
 
     private boolean active;
+
+    private String bio;
+
+    private UUID uuid;
 }
