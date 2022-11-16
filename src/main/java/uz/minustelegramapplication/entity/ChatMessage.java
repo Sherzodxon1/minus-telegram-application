@@ -7,6 +7,7 @@ import lombok.Setter;
 import uz.minustelegramapplication.base.BaseEntity;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -25,17 +26,16 @@ public class ChatMessage extends BaseEntity {
     @Column(name = "chat_id", insertable = false, updatable = false)
     private Integer chatId;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sender_id", referencedColumnName = "id")
-    private User user;
+    private User sender;
     @Column(name = "sender_id", insertable = false, updatable = false)
-    private Integer userId;
+    private Integer senderId;
 
     @Column(name = "is_view")
-    private boolean is_view;
+    private boolean isView = false;
 
-    @Column(name = "data")
-    private String data;
+    @Column(name = "data_time", columnDefinition = "TIMESTAMP DEFAULT NOW()")
+    private LocalDateTime dataTime = LocalDateTime.now();
 
 }

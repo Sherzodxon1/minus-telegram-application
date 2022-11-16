@@ -15,11 +15,12 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name = "channels")
 public class Channel extends BaseEntity {
+
     @Column(name = "name")
     private String name;
 
     @Column(name = "type")
-    private String type;
+    private String type;  // todo fixme
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id", referencedColumnName = "id")

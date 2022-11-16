@@ -1,6 +1,5 @@
 package uz.minustelegramapplication.base;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,8 +27,6 @@ public abstract class BaseEntity implements Serializable {
 
     @Column(name = "active", columnDefinition = "NUMERIC default 1")
     @Type(type = "org.hibernate.type.NumericBooleanType")
-    protected boolean active;
-
-
+    protected boolean active = true;
 
 }
