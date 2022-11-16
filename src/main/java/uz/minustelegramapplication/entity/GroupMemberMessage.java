@@ -29,6 +29,6 @@ public class GroupMemberMessage extends BaseEntity {
     private Integer groupMessageId;
 
     @Column(name = "is_view")
-    private boolean is_view;
+    private boolean is_view;  // todo fixme
 
 }

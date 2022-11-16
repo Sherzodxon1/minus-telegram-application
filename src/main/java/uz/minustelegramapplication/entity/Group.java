@@ -15,6 +15,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name = "groups")
 public class Group extends BaseEntity {
+
     @Column(name = "name")
     private String name;
 
@@ -29,9 +30,8 @@ public class Group extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id", referencedColumnName = "id")
-    private User user;
+    private User owner;
     @Column(name = "owner_id", insertable = false, updatable = false)
-    private Integer userId;
-
+    private Integer ownerId;
 
 }

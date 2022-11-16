@@ -32,10 +32,10 @@ public class GroupMessage extends BaseEntity {
     private Integer userId;
 
     @Column(name = "is_view")
-    private boolean is_view;
+    private boolean is_view; // todo fixme
 
     @Column(name = "data")
-    private String data;
+    private String data;   // todo fixme
 
 
 }
