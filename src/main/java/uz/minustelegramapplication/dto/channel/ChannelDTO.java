@@ -23,7 +23,7 @@ public class ChannelDTO {
 
     private ChannelType channelType;
 
-    private UserDTO user;
+    private UserDTO owner;
 
     private boolean active;
 }
