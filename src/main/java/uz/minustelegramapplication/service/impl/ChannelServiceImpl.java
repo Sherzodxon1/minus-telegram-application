@@ -57,6 +57,7 @@ public class ChannelServiceImpl implements ChannelService {
 
         } else {
             channel.setUsername("@" + dto.getUsername());
+
         }
 
         repo.save(channel);
