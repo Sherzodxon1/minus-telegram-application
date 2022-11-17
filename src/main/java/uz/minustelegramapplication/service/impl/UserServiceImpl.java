@@ -74,5 +74,23 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public ResponseEntity<ResponseData<UserDTO>> getByPhone(String phone) {
+        Optional<User> userOptional = repository.findByPhone(phone);
+        if (userOptional.isEmpty()) {
+            throw new RuntimeException("User is not found !!!");
+        }
+        return ResponseData.success200(mapper.toDto(userOptional.get()));
 
+    }
+
+    @Override
+    public ResponseEntity<ResponseData<UserDTO>> getByUserName(String name) {
+        Optional<User> userOptional = repository.findByUserName(name);
+        if (userOptional.isEmpty()) {
+            throw new RuntimeException("User is not found !!!");
+        }
+        return ResponseData.success200(mapper.toDto(userOptional.get()));
+
+    }
 }

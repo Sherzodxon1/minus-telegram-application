@@ -17,6 +17,9 @@ public interface BaseURI {
     String UPLOAD = "/upload";
     String DOWNLOAD = "/download";
 
+    String PHONE = "/phone";
+    String USERNAME = "/user_name";
+
 
 
 
