@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping(BaseURI.API + BaseURI.V1 + BaseURI.USER)
 public class UserController {
 
-    private UserService service;
+    private final UserService service;
 
     @GetMapping(BaseURI.GET + BaseURI.ALL)
     public ResponseEntity<ResponseData<List<UserDTO>>> getAll() {
@@ -40,9 +40,14 @@ public class UserController {
         return service.edit(dto);
     }
 
-    @DeleteMapping(BaseURI.DELETE + "/{id}")
-    public ResponseEntity<ResponseData<Boolean>> delete(@PathVariable(value = "id") Integer id) {
-        return service.delete(id);
+    @GetMapping(BaseURI.PHONE + "/{phone}")
+    public ResponseEntity<ResponseData<UserDTO>> searchByPhone(@PathVariable (value = "phone")  String phone) {
+        return service.getByPhone(phone);
+    }
+
+    @GetMapping(BaseURI.USERNAME + "/{name}")
+    public ResponseEntity<ResponseData<UserDTO>> searchByUserName(@PathVariable (value = "name")  String name) {
+        return service.getByUserName(name);
     }
 
 }

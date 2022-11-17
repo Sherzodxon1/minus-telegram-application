@@ -20,4 +20,8 @@ public interface UserService {
     ResponseEntity<ResponseData<UserDTO>> edit(UserUpdateDTO dto);
 
     ResponseEntity<ResponseData<Boolean>> delete(Integer id);
+
+    ResponseEntity<ResponseData<UserDTO>> getByPhone(String phone);
+
+    ResponseEntity<ResponseData<UserDTO>> getByUserName(String name);
 }
