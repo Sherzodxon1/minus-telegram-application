@@ -7,6 +7,7 @@ import uz.minustelegramapplication.dto.channel.ChannelCreateDTO;
 import uz.minustelegramapplication.dto.channel.ChannelDTO;
 import uz.minustelegramapplication.dto.channel.ChannelUpdateDTO;
 import uz.minustelegramapplication.entity.Channel;
+import uz.minustelegramapplication.enums.ChannelType;
 import uz.minustelegramapplication.mapper.ChannelMapper;
 import uz.minustelegramapplication.repo.ChannelRepository;
 import uz.minustelegramapplication.response.ResponseData;
@@ -43,6 +44,16 @@ public class ChannelServiceImpl implements ChannelService {
     @Override
     public ResponseEntity<ResponseData<ChannelDTO>> add(ChannelCreateDTO dto) {
         Channel channel = mapper.toEntity(dto);
+
+        if (ChannelType.PRIVATE.equals(channel.getChannelType())) {
+
+            channel.setUsername(null);
+            channel.setLink(BaseURI.TME + "+" + channel.getUuid().toString().substring(0, 16));
+
+        } else {
+            channel.setUsername("@" + dto.getUsername());
+        }
+
         repo.save(channel);
         return ResponseData.success201(mapper.toDto(channel));
     }

@@ -18,6 +18,10 @@ public class ChannelDTO {
 
     private UUID uuid;
 
+    private String username;
+
+    private String link;
+
     private ChannelType channelType;
 
     private UserDTO owner;

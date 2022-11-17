@@ -15,6 +15,9 @@ public class ChannelCreateDTO {
     @NotBlank(message = "Name is required !!!")
     private String name;
 
+    @NotBlank(message = "Username is required !!!")
+    private String username;
+
     @NotNull(message = "User id is required !!!")
     private Integer ownerId;
 
