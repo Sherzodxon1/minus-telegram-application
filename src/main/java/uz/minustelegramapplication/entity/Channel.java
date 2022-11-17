@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import uz.minustelegramapplication.base.BaseEntity;
-import uz.minustelegramapplication.enums.ChannelTypes;
+import uz.minustelegramapplication.enums.ChannelType;
 
 import javax.persistence.*;
 
@@ -22,7 +22,7 @@ public class Channel extends BaseEntity {
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "channel_type")
-    private ChannelTypes channelTypes;
+    private ChannelType channelType;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id", referencedColumnName = "id")
