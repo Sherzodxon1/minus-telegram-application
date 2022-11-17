@@ -7,19 +7,18 @@ import java.util.Arrays;
 
 @Getter
 @AllArgsConstructor
-public enum GroupType {
+public enum ChannelType {
 
-    GROUP("group"),
-    SUPERGROUP("supergroup"),
+    PRIVATE("private"),
+    PUBLIC("public"),
     UNKNOWN("unknown");
 
     private final String name;
 
-    public static GroupType getByName(final String name) {
-        return Arrays.stream(GroupType.values())
-                .filter(group -> group.name().equalsIgnoreCase(name))
+    public static ChannelType getByName(final String name) {
+        return Arrays.stream(ChannelType.values())
+                .filter(channel -> channel.name().equalsIgnoreCase(name))
                 .findFirst()
                 .orElse(UNKNOWN);
     }
-
 }
