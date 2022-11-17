@@ -6,6 +6,7 @@ public interface BaseURI {
 
     String DASHBOARD = "/dashboard";
     String USER = "/user";
+    String CHANNEL = "/channel";
 
     String FILE = "/file";
     String GET = "/get";

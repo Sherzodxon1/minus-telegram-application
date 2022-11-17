@@ -10,7 +10,11 @@ import uz.minustelegramapplication.entity.Channel;
 import uz.minustelegramapplication.mapper.qualifier.ChTypeQualifier;
 
 @Mapper(componentModel = "spring",
-        uses = ChTypeQualifier.class)
+        uses = {
+                UserMapper.class,
+                ChTypeQualifier.class
+        }
+)
 public interface ChannelMapper {
 
     @Mapping(target = "id", source = "id")
@@ -18,7 +22,7 @@ public interface ChannelMapper {
     @Mapping(target = "name", source = "name")
     @Mapping(target = "uuid", source = "uuid")
     @Mapping(target = "channelType", source = "channelType")
-    @Mapping(target = "user", source = "owner")
+    @Mapping(target = "owner", source = "owner")
     ChannelDTO toDto(Channel channel);
 
     @Mapping(target = "id", ignore = true)
