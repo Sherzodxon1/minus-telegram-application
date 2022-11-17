@@ -31,6 +31,6 @@ public class GroupMemberMessage extends BaseEntity {
 
     @Column(name = "is_view", columnDefinition = "NUMERIC default 0")
     @Type(type = "org.hibernate.type.NumericBooleanType")
-    private boolean isView = false;  // todo fixme
+    private boolean isView = false; // todo base qisa boladimi
 
 }
