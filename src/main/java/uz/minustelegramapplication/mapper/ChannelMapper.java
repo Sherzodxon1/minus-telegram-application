@@ -21,6 +21,8 @@ public interface ChannelMapper {
     @Mapping(target = "active", source = "active")
     @Mapping(target = "name", source = "name")
     @Mapping(target = "uuid", source = "uuid")
+    @Mapping(target = "username", source = "username")
+    @Mapping(target = "link", source = "link")
     @Mapping(target = "channelType", source = "channelType")
     @Mapping(target = "owner", source = "owner")
     ChannelDTO toDto(Channel channel);
@@ -29,6 +31,8 @@ public interface ChannelMapper {
     @Mapping(target = "active", ignore = true)
     @Mapping(target = "uuid", ignore = true)
     @Mapping(target = "name", source = "name")
+    @Mapping(target = "username", ignore = true)
+    @Mapping(target = "link", ignore = true)
     @Mapping(target = "ownerId", source = "ownerId")
     @Mapping(target = "channelType", source = "channelTypeName", qualifiedByName = "mapChannelType")
     Channel toEntity(ChannelCreateDTO dto);

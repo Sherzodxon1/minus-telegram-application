@@ -5,10 +5,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import uz.minustelegramapplication.base.BaseURI;
 import uz.minustelegramapplication.dto.channel.ChannelCreateDTO;
 import uz.minustelegramapplication.dto.channel.ChannelDTO;
 import uz.minustelegramapplication.dto.channel.ChannelUpdateDTO;
 import uz.minustelegramapplication.entity.Channel;
+import uz.minustelegramapplication.enums.ChannelType;
 import uz.minustelegramapplication.mapper.ChannelMapper;
 import uz.minustelegramapplication.repo.ChannelRepository;
 import uz.minustelegramapplication.response.ResponseData;
@@ -47,6 +49,16 @@ public class ChannelServiceImpl implements ChannelService {
     @Override
     public ResponseEntity<ResponseData<ChannelDTO>> add(ChannelCreateDTO dto) {
         Channel channel = mapper.toEntity(dto);
+
+        if (ChannelType.PRIVATE.equals(channel.getChannelType())) {
+
+            channel.setUsername(null);
+            channel.setLink(BaseURI.TME + "+" + channel.getUuid().toString().substring(0, 16));
+
+        } else {
+            channel.setUsername("@" + dto.getUsername());
+        }
+
         repo.save(channel);
 
         Integer channelId = channel.getId();

@@ -20,6 +20,7 @@ public interface BaseURI {
 
     String PHONE = "/phone";
     String USERNAME = "/user_name";
+    String TME = "https://t.me/";
 
 
 
