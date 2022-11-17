@@ -13,14 +13,14 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user_chats")
-public class UserChat extends BaseEntity {
+@Table(name = "channel_members")
+public class ChannelMember extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "chat_id", referencedColumnName = "id")
-    private Chat chat;
-    @Column(name = "chat_id", insertable = false, updatable = false)
-    private Integer chatId;
+    @JoinColumn(name = "channel_id", referencedColumnName = "id")
+    private Channel channel;
+    @Column(name = "channel_id", insertable = false, updatable = false)
+    private Integer channelId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")

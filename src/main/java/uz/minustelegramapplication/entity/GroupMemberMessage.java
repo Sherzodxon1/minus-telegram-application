@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 import uz.minustelegramapplication.base.BaseEntity;
 
 import javax.persistence.*;
@@ -28,7 +29,8 @@ public class GroupMemberMessage extends BaseEntity {
     @Column(name = "group_message_id", insertable = false, updatable = false)
     private Integer groupMessageId;
 
-    @Column(name = "is_view")
-    private boolean is_view;  // todo fixme
+    @Column(name = "is_view", columnDefinition = "NUMERIC default 0")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private boolean isView = false;  // todo fixme
 
 }
