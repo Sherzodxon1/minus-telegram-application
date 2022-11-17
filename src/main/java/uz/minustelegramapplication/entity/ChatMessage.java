@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 import uz.minustelegramapplication.base.BaseEntity;
 
 import javax.persistence.*;
@@ -32,8 +33,9 @@ public class ChatMessage extends BaseEntity {
     @Column(name = "sender_id", insertable = false, updatable = false)
     private Integer senderId;
 
-    @Column(name = "is_view")
-    private boolean isView = false;
+    @Column(name = "is_view", columnDefinition = "NUMERIC default 0")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private boolean isView = false; // todo base qisa boladimi
 
     @Column(name = "data_time", columnDefinition = "TIMESTAMP DEFAULT NOW()")
     private LocalDateTime dataTime = LocalDateTime.now();

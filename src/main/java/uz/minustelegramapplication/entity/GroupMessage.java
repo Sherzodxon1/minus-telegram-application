@@ -35,9 +35,9 @@ public class GroupMessage extends BaseEntity {
 
     @Column(name = "is_view", columnDefinition = "NUMERIC default 0")
     @Type(type = "org.hibernate.type.NumericBooleanType")
-    private boolean isView = false; // todo fixme
+    private boolean isView = false; // todo base qisa boladimi
 
     @Column(name = "data_time", columnDefinition = "TIMESTAMP DEFAULT NOW()")
-    private LocalDateTime dataTime = LocalDateTime.now();   // todo fixme
+    private LocalDateTime dataTime = LocalDateTime.now();
 
 }
