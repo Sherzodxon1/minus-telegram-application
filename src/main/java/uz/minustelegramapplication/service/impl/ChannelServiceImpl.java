@@ -3,9 +3,6 @@ package uz.minustelegramapplication.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-import uz.minustelegramapplication.base.BaseURI;
 import uz.minustelegramapplication.dto.channel.ChannelCreateDTO;
 import uz.minustelegramapplication.dto.channel.ChannelDTO;
 import uz.minustelegramapplication.dto.channel.ChannelUpdateDTO;
@@ -21,7 +18,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 @RequiredArgsConstructor
 public class ChannelServiceImpl implements ChannelService {
 
@@ -45,7 +41,6 @@ public class ChannelServiceImpl implements ChannelService {
         return ResponseData.success200(mapper.toDto(channel.get()));
     }
 
-    @Transactional(propagation = Propagation.SUPPORTS)
     @Override
     public ResponseEntity<ResponseData<ChannelDTO>> add(ChannelCreateDTO dto) {
         Channel channel = mapper.toEntity(dto);
@@ -61,11 +56,7 @@ public class ChannelServiceImpl implements ChannelService {
         }
 
         repo.save(channel);
-
-        Integer channelId = channel.getId();
-        Channel saved = repo.findById(channelId).get();
-
-        return ResponseData.success201(mapper.toDto(saved));
+        return ResponseData.success201(mapper.toDto(channel));
     }
 
     @Override
