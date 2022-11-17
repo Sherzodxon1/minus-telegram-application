@@ -31,9 +31,9 @@ public class Group extends BaseEntity {
     private String link;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner_id", referencedColumnName = "id")
+    @JoinColumn(name = "owner_id", referencedColumnName = "id", insertable = false, updatable = false)
     private User owner;
-    @Column(name = "owner_id", insertable = false, updatable = false)
+    @Column(name = "owner_id")
     private Integer ownerId;
 
 }

@@ -7,12 +7,10 @@ import uz.minustelegramapplication.dto.channel.ChannelCreateDTO;
 import uz.minustelegramapplication.dto.channel.ChannelDTO;
 import uz.minustelegramapplication.dto.channel.ChannelUpdateDTO;
 import uz.minustelegramapplication.entity.Channel;
-import uz.minustelegramapplication.entity.User;
 import uz.minustelegramapplication.mapper.ChannelMapper;
 import uz.minustelegramapplication.repo.ChannelRepository;
 import uz.minustelegramapplication.response.ResponseData;
 import uz.minustelegramapplication.service.ChannelService;
-import uz.minustelegramapplication.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +20,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ChannelServiceImpl implements ChannelService {
 
-    private final UserService userService;
     private final ChannelRepository repo;
     private final ChannelMapper mapper;
 
@@ -42,6 +39,7 @@ public class ChannelServiceImpl implements ChannelService {
         }
         return ResponseData.success200(mapper.toDto(channel.get()));
     }
+
     @Override
     public ResponseEntity<ResponseData<ChannelDTO>> add(ChannelCreateDTO dto) {
         Channel channel = mapper.toEntity(dto);
@@ -59,8 +57,6 @@ public class ChannelServiceImpl implements ChannelService {
         repo.save(channel);
         return ResponseData.success202(mapper.toDto(channel));
     }
-
-
 
     @Override
     public ResponseEntity<ResponseData<ChannelDTO>> getByName(String name) {

@@ -21,7 +21,7 @@ public class Channel extends BaseEntity {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner_id", referencedColumnName = "id",insertable = false, updatable = false)
+    @JoinColumn(name = "owner_id", referencedColumnName = "id", insertable = false, updatable = false)
     private User owner;
     @Column(name = "owner_id")
     private Integer ownerId;
