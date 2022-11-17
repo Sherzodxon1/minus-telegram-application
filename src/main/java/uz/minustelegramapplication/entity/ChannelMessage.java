@@ -15,17 +15,17 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "group_messages")
-public class GroupMessage extends BaseEntity {
+@Table(name = "channel_messages")
+public class ChannelMessage extends BaseEntity {
 
     @Column(name = "text")
     private String text;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "group_id", referencedColumnName = "id")
-    private Group group;
-    @Column(name = "group_id", insertable = false, updatable = false)
-    private Integer groupId;
+    @JoinColumn(name = "channel_id", referencedColumnName = "id")
+    private Channel channel;
+    @Column(name = "channel_id", insertable = false, updatable = false)
+    private Integer channelId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sender_id", referencedColumnName = "id")
@@ -35,9 +35,9 @@ public class GroupMessage extends BaseEntity {
 
     @Column(name = "is_view", columnDefinition = "NUMERIC default 0")
     @Type(type = "org.hibernate.type.NumericBooleanType")
-    private boolean isView = false; // todo fixme
+    private boolean isView = false;
 
     @Column(name = "data_time", columnDefinition = "TIMESTAMP DEFAULT NOW()")
-    private LocalDateTime dataTime = LocalDateTime.now();   // todo fixme
+    private LocalDateTime dataTime = LocalDateTime.now();
 
 }

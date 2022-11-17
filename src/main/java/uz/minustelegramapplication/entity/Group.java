@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import uz.minustelegramapplication.base.BaseEntity;
+import uz.minustelegramapplication.enums.GroupType;
 
 import javax.persistence.*;
 
@@ -19,8 +20,9 @@ public class Group extends BaseEntity {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "type")
-    private String type;
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "group_type")
+    private GroupType groupType;
 
     @Column(name = "user_name")
     private String userName;
