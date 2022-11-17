@@ -22,6 +22,7 @@ public interface BaseURI {
     String PHONE = "/phone";
     String USERNAME = "/user_name";
     String CHAT_ID  = "/chatId";
+    String TME  = "/https://t.me/";
 
 
 
