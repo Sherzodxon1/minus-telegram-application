@@ -91,6 +91,5 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("User is not found !!!");
         }
         return ResponseData.success200(mapper.toDto(userOptional.get()));
-
     }
 }

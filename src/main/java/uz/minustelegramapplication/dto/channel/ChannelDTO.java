@@ -1,9 +1,6 @@
 package uz.minustelegramapplication.dto.channel;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import uz.minustelegramapplication.dto.UserDTO;
 import uz.minustelegramapplication.enums.ChannelType;
 
