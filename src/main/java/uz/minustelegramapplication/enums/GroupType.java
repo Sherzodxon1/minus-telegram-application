@@ -9,6 +9,8 @@ import java.util.Arrays;
 @AllArgsConstructor
 public enum GroupType {
 
+    PRIVATE("private"),
+    PUBLIC("public"),
     GROUP("group"),
     SUPERGROUP("supergroup"),
     UNKNOWN("unknown");
