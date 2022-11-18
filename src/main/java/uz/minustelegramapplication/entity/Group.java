@@ -25,7 +25,7 @@ public class Group extends BaseEntity {
     private GroupType groupType;
 
     @Column(name = "user_name")
-    private String userName;
+    private String username;
 
     @Column(name = "link")
     private String link;

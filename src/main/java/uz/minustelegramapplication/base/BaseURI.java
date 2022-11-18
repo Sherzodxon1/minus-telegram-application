@@ -7,7 +7,8 @@ public interface BaseURI {
     String DASHBOARD = "/dashboard";
     String USER = "/user";
     String CHANNEL = "/channel";
-        String CHATMESSAGE = "/chatMessage";
+    String GROUP = "/group";
+    String CHATMESSAGE = "/chatMessage";
 
     String FILE = "/file";
     String GET = "/get";
@@ -21,10 +22,8 @@ public interface BaseURI {
 
     String PHONE = "/phone";
     String USERNAME = "/user_name";
-    String CHAT_ID  = "/chatId";
-    String TME  = "https://t.me/";
-
-
+    String CHAT_ID = "/chatId";
+    String TME = "https://t.me/";
 
 
 }
