@@ -18,6 +18,9 @@ public class ChannelUpdateDTO {
     @NotBlank(message = "Name is required !!!")
     private String name;
 
+    @NotBlank(message = "Username is required !!!")
+    private String username;
+
     @NotBlank(message = "Channel type is required !!!")
     private String channelTypeName;
 

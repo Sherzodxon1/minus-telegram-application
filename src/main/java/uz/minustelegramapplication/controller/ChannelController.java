@@ -41,7 +41,7 @@ public class ChannelController {
     }
 
     @GetMapping(BaseURI.USERNAME + "/{name}")
-    public ResponseEntity<ResponseData<ChannelDTO>> searchByName(@PathVariable(value = "name") String name) {
+    public ResponseEntity<ResponseData<ChannelDTO>> searchByUsername(@PathVariable(value = "name") String name) {
         return service.getByName(name);
     }
 
