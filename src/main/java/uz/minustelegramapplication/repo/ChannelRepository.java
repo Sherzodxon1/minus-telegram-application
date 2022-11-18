@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface ChannelRepository extends BaseRepository<Channel> {
 
-    Optional<Channel> findByName(String name);
+    Optional<Channel> findByUsername(String name);
 }
