@@ -27,4 +27,6 @@ public interface UserService {
 
     ResponseEntity<ResponseData<UserDTO>> getByUserName(String name);
 
+    ResponseEntity<ResponseData<UserDTO>> getLogin(String phone, String password);
+
 }

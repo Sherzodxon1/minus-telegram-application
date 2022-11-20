@@ -19,11 +19,11 @@ public class UserDTO {
 
     private String lastName;
 
-    private String phone;
+    private Integer phone;
 
     private String userName;
 
-    private String password;
+    private Integer password;
 
     private boolean active;
 
