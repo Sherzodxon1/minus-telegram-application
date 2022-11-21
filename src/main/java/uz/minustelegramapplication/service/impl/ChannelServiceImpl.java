@@ -3,7 +3,6 @@ package uz.minustelegramapplication.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import uz.minustelegramapplication.base.BaseURI;
 import uz.minustelegramapplication.dto.channel.ChannelCreateDTO;
 import uz.minustelegramapplication.dto.channel.ChannelDTO;
 import uz.minustelegramapplication.dto.channel.ChannelUpdateDTO;
@@ -47,13 +46,9 @@ public class ChannelServiceImpl implements ChannelService {
         Channel channel = mapper.toEntity(dto);
 
         if (ChannelType.PRIVATE.equals(channel.getChannelType())) {
-
             channel.setUsername(null);
-            channel.setLink(BaseURI.TME + "+" + channel.getUuid().toString().substring(0, 16));
-
         } else {
             channel.setUsername("@" + dto.getUsername());
-
         }
 
         repo.save(channel);
@@ -69,13 +64,8 @@ public class ChannelServiceImpl implements ChannelService {
         Channel channel = mapper.toEntity(optional.get(), dto);
 
         if (ChannelType.PRIVATE.equals(channel.getChannelType())) {
-
             channel.setUsername(null);
-            channel.setLink(BaseURI.TME + "+" + channel.getUuid().toString().substring(0, 16));
-
         } else {
-
-            channel.setLink(null);
             channel.setUsername("@" + dto.getUsername());
         }
 
@@ -90,5 +80,17 @@ public class ChannelServiceImpl implements ChannelService {
             throw new RuntimeException("Channel is not found !!!");
         }
         return ResponseData.success200(mapper.toDto(channel.get()));
+    }
+
+    @Override
+    public ResponseEntity<ResponseData<ChannelDTO>> delete(Integer id) {
+        Optional<Channel> optional = repo.findById(id);
+        if (optional.isEmpty()) {
+            throw new RuntimeException("Channel is not found !!!");
+        }
+
+//        repo.save(channel);
+//        return ResponseData.success202(mapper.toDto(channel));
+        return null;
     }
 }

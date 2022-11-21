@@ -23,9 +23,6 @@ public class Channel extends BaseEntity {
     @Column(name = "username")
     private String username;
 
-    @Column(name = "link")
-    private String link;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id", referencedColumnName = "id", insertable = false, updatable = false)
     private User owner;
@@ -35,6 +32,5 @@ public class Channel extends BaseEntity {
     @Enumerated(value = EnumType.STRING)
     @Column(name = "channel_type")
     private ChannelType channelType;
-
 
 }
