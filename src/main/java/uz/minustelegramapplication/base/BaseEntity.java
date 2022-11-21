@@ -25,10 +25,6 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "uuid")
     protected UUID uuid = UUID.randomUUID();
 
-    @Column(name = "is_main", columnDefinition = "NUMERIC default 0")
-    @Type(type = "org.hibernate.type.NumericBooleanType")
-    protected boolean isMain = false;
-
     @Column(name = "active", columnDefinition = "NUMERIC default 1")
     @Type(type = "org.hibernate.type.NumericBooleanType")
     protected boolean active = true;

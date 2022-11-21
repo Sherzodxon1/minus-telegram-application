@@ -29,6 +29,10 @@ public class UserFile extends BaseEntity {
     @Column(name = "mime_type")
     private String mimeType;
 
+    @Column(name = "is_main", columnDefinition = "NUMERIC default 0")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    protected boolean isMain = false;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
     private User user;
