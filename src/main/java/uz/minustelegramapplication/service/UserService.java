@@ -4,11 +4,12 @@ import org.springframework.http.ResponseEntity;
 import uz.minustelegramapplication.dto.UserCreateDTO;
 import uz.minustelegramapplication.dto.UserDTO;
 import uz.minustelegramapplication.dto.UserUpdateDTO;
-import uz.minustelegramapplication.entity.User;
+import uz.minustelegramapplication.dto.channel.ChannelDTO;
+import uz.minustelegramapplication.dto.chatMessage.ChatDTO;
+import uz.minustelegramapplication.dto.group.GroupDTO;
 import uz.minustelegramapplication.response.ResponseData;
 
 import java.util.List;
-import java.util.Optional;
 
 
 public interface UserService {
@@ -29,4 +30,8 @@ public interface UserService {
 
     ResponseEntity<ResponseData<UserDTO>> getLogin(String phone, String password);
 
+    ResponseEntity<ResponseData<List<GroupDTO>>> getByUserId(Integer ownerId);
+    ResponseEntity<ResponseData<List<ChatDTO>>> findByOwnerId(Integer id);
+
+    ResponseEntity<ResponseData<List<ChannelDTO>>> getUserId(Integer userId);
 }

@@ -11,6 +11,8 @@ public interface BaseURI {
     String LOGIN = "/login";
     String CHATMESSAGE = "/chatMessage";
 
+    String CHAT = "/chat";
+
     String FILE = "/file";
     String GET = "/get";
     String ALL = "/all";
@@ -27,7 +29,11 @@ public interface BaseURI {
     String TME = "https://t.me/";
 
 
-    String USER_FIND = "user_find";
+
+    String GROUP_BY_ID = "/user_id";
+    String CHAT_BY_ID = "/id";
+
+    String CHANNEL_BY_ID = "/owner_id";
 }
 
 
