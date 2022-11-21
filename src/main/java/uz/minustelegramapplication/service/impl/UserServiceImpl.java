@@ -10,6 +10,7 @@ import uz.minustelegramapplication.entity.User;
 import uz.minustelegramapplication.mapper.UserMapper;
 import uz.minustelegramapplication.repo.UserRepository;
 import uz.minustelegramapplication.response.ResponseData;
+import uz.minustelegramapplication.service.FileService;
 import uz.minustelegramapplication.service.UserService;
 
 import java.util.ArrayList;
@@ -21,6 +22,8 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     private final UserRepository repository;
     private final UserMapper mapper;
+
+    private final FileService fileService;
 
 
     @Override
@@ -44,8 +47,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseEntity<ResponseData<UserDTO>> add(UserCreateDTO dto) {
+
         User user = mapper.toEntity(dto);
         repository.save(user);
+        fileService.attachUser(dto.getFileIds(), user.getId());
         return ResponseData.success201(mapper.toDto(user));
 
     }
