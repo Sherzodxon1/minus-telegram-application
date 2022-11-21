@@ -8,6 +8,7 @@ public interface BaseURI {
     String USER = "/user";
     String CHANNEL = "/channel";
     String GROUP = "/group";
+    String LOGIN = "/login";
     String CHATMESSAGE = "/chatMessage";
 
     String FILE = "/file";
@@ -27,6 +28,7 @@ public interface BaseURI {
     String TME = "https://t.me/";
 
 
+    String USER_FIND = "user_find";
 }
 
 

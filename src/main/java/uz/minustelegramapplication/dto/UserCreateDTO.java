@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -17,13 +18,13 @@ public class UserCreateDTO {
     @NotBlank(message = "Last name is required !!!")
     private String lastName;
 
-    @NotBlank(message = "Phone is required !!!")
+    @NotNull(message = "Phone is required !!!")
     private String phone;
 
     @NotBlank(message = "User name is required !!!")
     private String userName;
 
-    @NotBlank(message = "Password is required !!!")
+    @NotNull(message = "Password is required !!!")
     private String password;
 
     @NotBlank(message = "bio is required !!!")

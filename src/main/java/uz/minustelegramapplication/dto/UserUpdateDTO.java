@@ -21,12 +21,12 @@ public class UserUpdateDTO {
     @NotBlank(message = "Last name is required !!!")
     private String lastName;
 
-    @NotBlank(message = "Phone is required !!!")
+    @NotNull(message = "Phone is required !!!")
     private String phone;
 
     @NotBlank(message = "User name is required !!!")
     private String userName;
 
-    @NotBlank(message = "Password is required !!!")
+    @NotNull(message = "Password is required !!!")
     private String password;
 }

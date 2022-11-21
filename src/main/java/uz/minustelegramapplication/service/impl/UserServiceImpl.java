@@ -92,4 +92,13 @@ public class UserServiceImpl implements UserService {
         }
         return ResponseData.success200(mapper.toDto(userOptional.get()));
     }
+
+    @Override
+    public ResponseEntity<ResponseData<UserDTO>> getLogin(String phone, String password) {
+        Optional<User> user = repository.findByPhoneAndPassword(phone, password);
+        if (user.isEmpty()) {
+            throw new RuntimeException("Login is not found !!!");
+        }
+        return ResponseData.success200(mapper.toDto(user.get()));
+    }
 }

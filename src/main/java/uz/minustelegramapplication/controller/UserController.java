@@ -35,10 +35,6 @@ public class UserController {
         return service.add(dto);
     }
 
-    @PutMapping(BaseURI.EDIT)
-    public ResponseEntity<ResponseData<UserDTO>> edit(@Valid @RequestBody UserUpdateDTO dto) {
-        return service.edit(dto);
-    }
 
     @GetMapping(BaseURI.PHONE + "/{phone}")
     public ResponseEntity<ResponseData<UserDTO>> searchByPhone(@PathVariable(value = "phone") String phone) {
@@ -49,5 +45,6 @@ public class UserController {
     public ResponseEntity<ResponseData<UserDTO>> searchByUserName(@PathVariable(value = "name") String name) {
         return service.getByUserName(name);
     }
+
 
 }

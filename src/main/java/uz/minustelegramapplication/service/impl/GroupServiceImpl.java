@@ -91,4 +91,13 @@ public class GroupServiceImpl implements GroupService {
         }
         return ResponseData.success200(mapper.toDto(group.get()));
     }
+
+    @Override
+    public ResponseEntity<ResponseData<GroupDTO>> getByUserId(Integer userId) {
+        Optional<Group> group = repo.findById(userId);
+        if (group.isEmpty()) {
+            throw new RuntimeException("Group is not found !!!");
+        }
+        return ResponseData.success200(mapper.toDto(group.get()));
+    }
 }
