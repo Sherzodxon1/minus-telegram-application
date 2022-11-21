@@ -19,11 +19,15 @@ public abstract class BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id",unique = true)
+    @Column(name = "id", unique = true)
     protected Integer id;
 
     @Column(name = "uuid")
     protected UUID uuid = UUID.randomUUID();
+
+    @Column(name = "is_main", columnDefinition = "NUMERIC default 0")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    protected boolean isMain = false;
 
     @Column(name = "active", columnDefinition = "NUMERIC default 1")
     @Type(type = "org.hibernate.type.NumericBooleanType")

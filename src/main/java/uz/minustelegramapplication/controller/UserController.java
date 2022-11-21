@@ -39,12 +39,12 @@ public class UserController {
 
 
     @GetMapping(BaseURI.PHONE + "/{phone}")
-    public ResponseEntity<ResponseData<UserDTO>> searchByPhone(@PathVariable (value = "phone")  String phone) {
+    public ResponseEntity<ResponseData<UserDTO>> searchByPhone(@PathVariable(value = "phone") String phone) {
         return service.getByPhone(phone);
     }
 
     @GetMapping(BaseURI.USERNAME + "/{name}")
-    public ResponseEntity<ResponseData<UserDTO>> searchByUserName(@PathVariable (value = "name")  String name) {
+    public ResponseEntity<ResponseData<UserDTO>> searchByUserName(@PathVariable(value = "name") String name) {
         return service.getByUserName(name);
     }
     @GetMapping(BaseURI.GROUP_BY_ID + "/{groupById}")

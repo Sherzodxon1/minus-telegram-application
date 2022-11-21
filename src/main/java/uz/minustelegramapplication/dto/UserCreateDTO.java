@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Getter
 @Setter
@@ -29,5 +30,7 @@ public class UserCreateDTO {
 
     @NotBlank(message = "bio is required !!!")
     private String bio;
+
+    private List<Integer> fileIds;
 
 }

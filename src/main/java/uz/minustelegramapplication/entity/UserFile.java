@@ -1,0 +1,38 @@
+package uz.minustelegramapplication.entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.Type;
+import uz.minustelegramapplication.base.BaseEntity;
+
+import javax.persistence.*;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "user_files")
+public class UserFile extends BaseEntity {
+
+    @Column(name = "name", unique = true, nullable = false)
+    private String name;
+
+    @Column(name = "original_name", nullable = false)
+    private String originalName;
+
+    @Column(name = "size")
+    private Long size;
+
+    @Column(name = "mime_type")
+    private String mimeType;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private User user;
+    @Column(name = "user_id")
+    private Integer userId;
+
+}
