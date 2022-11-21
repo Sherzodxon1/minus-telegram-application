@@ -6,6 +6,7 @@ public interface BaseURI {
 
     String DASHBOARD = "/dashboard";
     String USER = "/user";
+    String CONTACT = "/contact";
     String CHANNEL = "/channel";
     String GROUP = "/group";
     String LOGIN = "/login";
@@ -23,6 +24,7 @@ public interface BaseURI {
 
     String PHONE = "/phone";
     String USERNAME = "/user_name";
+    String NAME = "/name";
     String CHAT_ID = "/chatId";
     String TME = "https://t.me/";
 
