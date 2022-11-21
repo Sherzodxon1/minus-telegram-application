@@ -148,8 +148,5 @@ public class UserServiceImpl implements UserService {
         List<ChannelDTO> dtoList = new ArrayList<>();
         list.forEach(channel -> dtoList.add(channelMapper.toDto(channel)));
         return ResponseData.success200(dtoList);
-
-
     }
-
 }

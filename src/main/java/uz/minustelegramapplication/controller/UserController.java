@@ -57,8 +57,8 @@ public class UserController {
         return service.findByOwnerId(id);
     }
 
-    @GetMapping(BaseURI.CHANNEL_BY_ID + "/{channelById}")
-    public ResponseEntity<ResponseData<List<ChannelDTO>>> getByOwnerId(@PathVariable(value = "channelById") Integer ownerId) {
+    @GetMapping(BaseURI.CHANNEL_BY_ID + "/{channelByUserId}")
+    public ResponseEntity<ResponseData<List<ChannelDTO>>> getByOwnerId(@PathVariable(value = "channelByUserId") Integer ownerId) {
         return service.getUserId(ownerId);
     }
 }
