@@ -22,6 +22,8 @@ import uz.minustelegramapplication.repo.ChatRepository;
 import uz.minustelegramapplication.repo.GroupRepository;
 import uz.minustelegramapplication.repo.UserRepository;
 import uz.minustelegramapplication.response.ResponseData;
+import uz.minustelegramapplication.service.ContactService;
+import uz.minustelegramapplication.service.FileService;
 import uz.minustelegramapplication.service.UserService;
 
 import java.util.ArrayList;
@@ -44,6 +46,9 @@ public class UserServiceImpl implements UserService {
     private final ChatMapper chatMapper;
 
     private final ChannelMapper channelMapper;
+
+    private final ContactService contactService;
+    private final FileService fileService;
 
 
     @Override
@@ -69,6 +74,8 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<ResponseData<UserDTO>> add(UserCreateDTO dto) {
         User user = mapper.toEntity(dto);
         repository.save(user);
+        fileService.attachUser(dto.getFileIds(), user.getId());
+        contactService.attachUser(dto.getContactIds(), user.getId());
         return ResponseData.success201(mapper.toDto(user));
 
     }
@@ -142,6 +149,7 @@ public class UserServiceImpl implements UserService {
 
 
     }
+
     @Override
     public ResponseEntity<ResponseData<List<ChannelDTO>>> getUserId(Integer userId) {
         List<Channel> list = channelRepository.findByOwnerId(userId);
