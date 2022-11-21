@@ -15,6 +15,7 @@ public interface BaseURI {
     String GET = "/get";
     String ALL = "/all";
     String ADD = "/add";
+    String LOGIN = "/login";
     String EDIT = "/edit";
     String DELETE = "/delete";
 

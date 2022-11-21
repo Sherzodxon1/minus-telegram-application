@@ -40,6 +40,11 @@ public class ChannelController {
         return service.edit(dto);
     }
 
+    @PutMapping(BaseURI.DELETE)
+    public ResponseEntity<ResponseData<ChannelDTO>> delete(Integer id) {
+        return service.delete(id);
+    }
+
     @GetMapping(BaseURI.USERNAME + "/{name}")
     public ResponseEntity<ResponseData<ChannelDTO>> searchByUsername(@PathVariable(value = "name") String name) {
         return service.getByName(name);

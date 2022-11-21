@@ -1,10 +1,11 @@
 package uz.minustelegramapplication.dto.channel;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import uz.minustelegramapplication.dto.UserDTO;
 import uz.minustelegramapplication.enums.ChannelType;
-
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -16,8 +17,6 @@ public class ChannelDTO {
 
     private String name;
 
-    private UUID uuid;
-
     private String username;
 
     private String link;
@@ -27,4 +26,5 @@ public class ChannelDTO {
     private UserDTO owner;
 
     private boolean active;
+
 }
