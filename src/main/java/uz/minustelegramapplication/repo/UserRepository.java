@@ -2,7 +2,6 @@ package uz.minustelegramapplication.repo;
 
 import org.springframework.stereotype.Repository;
 import uz.minustelegramapplication.base.BaseRepository;
-import uz.minustelegramapplication.dto.UserDTO;
 import uz.minustelegramapplication.entity.User;
 
 import java.util.Optional;

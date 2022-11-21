@@ -6,11 +6,22 @@ import org.springframework.stereotype.Service;
 import uz.minustelegramapplication.dto.UserCreateDTO;
 import uz.minustelegramapplication.dto.UserDTO;
 import uz.minustelegramapplication.dto.UserUpdateDTO;
+import uz.minustelegramapplication.dto.channel.ChannelDTO;
+import uz.minustelegramapplication.dto.chatMessage.ChatDTO;
+import uz.minustelegramapplication.dto.group.GroupDTO;
+import uz.minustelegramapplication.entity.Channel;
+import uz.minustelegramapplication.entity.Chat;
+import uz.minustelegramapplication.entity.Group;
 import uz.minustelegramapplication.entity.User;
+import uz.minustelegramapplication.mapper.ChannelMapper;
+import uz.minustelegramapplication.mapper.ChatMapper;
+import uz.minustelegramapplication.mapper.GroupMapper;
 import uz.minustelegramapplication.mapper.UserMapper;
+import uz.minustelegramapplication.repo.ChannelRepository;
+import uz.minustelegramapplication.repo.ChatRepository;
+import uz.minustelegramapplication.repo.GroupRepository;
 import uz.minustelegramapplication.repo.UserRepository;
 import uz.minustelegramapplication.response.ResponseData;
-import uz.minustelegramapplication.service.FileService;
 import uz.minustelegramapplication.service.UserService;
 
 import java.util.ArrayList;
@@ -21,9 +32,18 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository repository;
+    private final GroupRepository groupRepository;
+
+    private final ChatRepository chatRepository;
+
+    private final ChannelRepository channelRepository;
+    private final GroupMapper groupMapper;
+
     private final UserMapper mapper;
 
-    private final FileService fileService;
+    private final ChatMapper chatMapper;
+
+    private final ChannelMapper channelMapper;
 
 
     @Override
@@ -47,10 +67,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseEntity<ResponseData<UserDTO>> add(UserCreateDTO dto) {
-
         User user = mapper.toEntity(dto);
         repository.save(user);
-        fileService.attachUser(dto.getFileIds(), user.getId());
         return ResponseData.success201(mapper.toDto(user));
 
     }
@@ -105,5 +123,30 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("Login is not found !!!");
         }
         return ResponseData.success200(mapper.toDto(user.get()));
+    }
+
+    @Override
+    public ResponseEntity<ResponseData<List<GroupDTO>>> getByUserId(Integer ownerId) {
+        List<Group> list = groupRepository.findByOwnerId(ownerId);
+        List<GroupDTO> dtoList = new ArrayList<>();
+        list.forEach(group -> dtoList.add(groupMapper.toDto(group)));
+        return ResponseData.success200(dtoList);
+    }
+
+    @Override
+    public ResponseEntity<ResponseData<List<ChatDTO>>> findByOwnerId(Integer id) {
+        List<Chat> list = chatRepository.findChatById(id);
+        List<ChatDTO> dtoList = new ArrayList<>();
+        list.forEach(chat -> dtoList.add(chatMapper.toDto(chat)));
+        return ResponseData.success200(dtoList);
+
+
+    }
+    @Override
+    public ResponseEntity<ResponseData<List<ChannelDTO>>> getUserId(Integer userId) {
+        List<Channel> list = channelRepository.findByOwnerId(userId);
+        List<ChannelDTO> dtoList = new ArrayList<>();
+        list.forEach(channel -> dtoList.add(channelMapper.toDto(channel)));
+        return ResponseData.success200(dtoList);
     }
 }

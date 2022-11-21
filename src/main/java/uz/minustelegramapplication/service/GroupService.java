@@ -19,6 +19,5 @@ public interface GroupService {
     ResponseEntity<ResponseData<GroupDTO>> edit(GroupUpdateDTO dto);
 
     ResponseEntity<ResponseData<GroupDTO>> getByName(String name);
-    ResponseEntity<ResponseData<GroupDTO>> getByUserId(Integer id);
 
 }

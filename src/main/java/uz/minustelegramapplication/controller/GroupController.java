@@ -45,9 +45,4 @@ public class GroupController {
         return service.getByName(name);
     }
 
-    @GetMapping(BaseURI.USER_FIND + "/{userId}")
-    public ResponseEntity<ResponseData<GroupDTO>> searchByUsername(@PathVariable(value = "userId") Integer id) {
-        return service.getByUserId(id);
-    }
-
 }
