@@ -34,10 +34,4 @@ public class User extends BaseEntity {
     @Column(name = "bio")
     private String bio;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "contact_id", referencedColumnName = "id", insertable = false, updatable = false)
-    private Contact contact;
-    @Column(name = "contact_id")
-    private Integer contactId;
-
 }

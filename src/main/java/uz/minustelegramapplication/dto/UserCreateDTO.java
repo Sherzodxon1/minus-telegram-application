@@ -33,4 +33,6 @@ public class UserCreateDTO {
 
     private List<Integer> fileIds;
 
+    private List<Integer> contactIds;
+
 }
