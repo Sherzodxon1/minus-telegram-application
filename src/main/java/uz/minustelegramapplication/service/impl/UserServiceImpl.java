@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<ResponseData<UserDTO>> get(Integer id) {
         Optional<User> userOptional = repository.findById(id);
         if (userOptional.isEmpty()) {
-            throw new RuntimeException("User is not found !!!");
+            return  ResponseData.notFoundData("User is not found !!!");
         }
         return ResponseData.success200(mapper.toDto(userOptional.get()));
 
@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<ResponseData<UserDTO>> edit(UserUpdateDTO dto) {
         Optional<User> userOptional = repository.findById(dto.getId());
         if (userOptional.isEmpty()) {
-            throw new RuntimeException("User is not found !!!");
+            return  ResponseData.notFoundData("User is not found !!!");
         }
         User user = mapper.toEntity(userOptional.get(), dto);
         repository.save(user);
@@ -94,7 +94,7 @@ public class UserServiceImpl implements UserService {
 
         Optional<User> userOptional = repository.findById(id);
         if (userOptional.isEmpty()) {
-            throw new RuntimeException("User is not found !!!");
+            return  ResponseData.notFoundData("User is not found !!!");
         }
         repository.delete(userOptional.get());
         return ResponseData.success200(true);
@@ -105,7 +105,7 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<ResponseData<UserDTO>> getByPhone(String phone) {
         Optional<User> userOptional = repository.findByPhone(phone);
         if (userOptional.isEmpty()) {
-            throw new RuntimeException("User is not found !!!");
+            return  ResponseData.notFoundData("User is not found !!!");
         }
         return ResponseData.success200(mapper.toDto(userOptional.get()));
 
@@ -115,7 +115,7 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<ResponseData<UserDTO>> getByUserName(String name) {
         Optional<User> userOptional = repository.findByUserName(name);
         if (userOptional.isEmpty()) {
-            throw new RuntimeException("User is not found !!!");
+            return  ResponseData.notFoundData("User is not found !!!");
         }
         return ResponseData.success200(mapper.toDto(userOptional.get()));
     }
@@ -124,7 +124,8 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<ResponseData<UserDTO>> getLogin(String phone, String password) {
         Optional<User> user = repository.findByPhoneAndPassword(phone, password);
         if (user.isEmpty()) {
-            throw new RuntimeException("Login is not found !!!");
+//            throw new RuntimeException("User is not found !!!");
+            return  ResponseData.notFoundData("User is not found !!!");
         }
         return ResponseData.success200(mapper.toDto(user.get()));
     }

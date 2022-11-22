@@ -36,7 +36,7 @@ public class ChannelServiceImpl implements ChannelService {
     public ResponseEntity<ResponseData<ChannelDTO>> get(Integer id) {
         Optional<Channel> channel = repo.findById(id);
         if (channel.isEmpty()) {
-            throw new RuntimeException("Channel is not found !!!");
+            return  ResponseData.notFoundData("Channel is not found !!!");
         }
         return ResponseData.success200(mapper.toDto(channel.get()));
     }
@@ -59,7 +59,7 @@ public class ChannelServiceImpl implements ChannelService {
     public ResponseEntity<ResponseData<ChannelDTO>> edit(ChannelUpdateDTO dto) {
         Optional<Channel> optional = repo.findById(dto.getId());
         if (optional.isEmpty()) {
-            throw new RuntimeException("Channel is not found !!!");
+            return  ResponseData.notFoundData("Channel is not found !!!");
         }
         Channel channel = mapper.toEntity(optional.get(), dto);
 
@@ -77,7 +77,7 @@ public class ChannelServiceImpl implements ChannelService {
     public ResponseEntity<ResponseData<ChannelDTO>> getByName(String name) {
         Optional<Channel> channel = repo.findByUsername(name);
         if (channel.isEmpty()) {
-            throw new RuntimeException("Channel is not found !!!");
+            return  ResponseData.notFoundData("Channel is not found !!!");
         }
         return ResponseData.success200(mapper.toDto(channel.get()));
     }
@@ -86,7 +86,7 @@ public class ChannelServiceImpl implements ChannelService {
     public ResponseEntity<ResponseData<ChannelDTO>> delete(Integer id) {
         Optional<Channel> optional = repo.findById(id);
         if (optional.isEmpty()) {
-            throw new RuntimeException("Channel is not found !!!");
+            return  ResponseData.notFoundData("Channel is not found !!!");
         }
 
 //        repo.save(channel);
