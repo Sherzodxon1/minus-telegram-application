@@ -50,7 +50,7 @@ public class FileServiceImpl implements FileService {
     public ResponseEntity<ResponseData<UserFileDTO>> upload(MultipartFile file) {
         final String fileOriginalName = file.getOriginalFilename();
         if (!StringUtils.hasText(fileOriginalName)) {
-            throw new RuntimeException("File name should be null !!!");
+            return  ResponseData.notFoundData("File name should be null !!!");
         }
 
         String format = fileOriginalName.split("\\.")[1];

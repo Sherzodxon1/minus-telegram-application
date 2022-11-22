@@ -34,7 +34,7 @@ public class ContactServiceImpl implements ContactService {
     public ResponseEntity<ResponseData<ContactDTO>> get(Integer id) {
         Optional<Contact> contact = repo.findById(id);
         if (contact.isEmpty()) {
-            throw new RuntimeException("Contact is not found !!!");
+            return  ResponseData.notFoundData("Contact is not found !!!");
         }
         return ResponseData.success200(mapper.toDto(contact.get()));
     }

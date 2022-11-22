@@ -19,7 +19,7 @@ public interface ChannelRepository extends BaseRepository<Channel> {
 
     @Query(value = "select * from users where is_active = ?; "
             , nativeQuery = true)
-    List<User> activeUsers(Integer activeNumber);
+    List<User> active(Integer active);
 
 
     @Query(value = "select count(u.id) from channels c inner join channel_members member  on c.id = member.channel_id" +
