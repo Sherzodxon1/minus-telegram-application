@@ -11,6 +11,8 @@ import uz.minustelegramapplication.dto.chatMessage.ChatMessageDTO;
 import uz.minustelegramapplication.response.ResponseData;
 import uz.minustelegramapplication.service.ChatMessageService;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(BaseURI.API + BaseURI.V1 + BaseURI.CHATMESSAGE)
@@ -19,7 +21,7 @@ public class ChatMessageController {
     private final ChatMessageService service;
 
     @GetMapping(BaseURI.CHAT_ID + "/{chatId}")
-    public ResponseEntity<ResponseData<ChatMessageDTO>> findByChatId(@PathVariable(value = "chatId") Integer chatId) {
-        return service.getByChatId(chatId);
+    public ResponseEntity<ResponseData<List<ChatMessageDTO>>> findByChatId(@PathVariable(value = "chatId") Integer chatId) {
+        return service.getChatId(chatId);
     }
 }

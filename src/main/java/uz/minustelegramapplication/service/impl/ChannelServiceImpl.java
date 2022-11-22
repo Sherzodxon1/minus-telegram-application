@@ -93,4 +93,9 @@ public class ChannelServiceImpl implements ChannelService {
 //        return ResponseData.success202(mapper.toDto(channel));
         return null;
     }
+
+    @Override
+    public Integer getCount(Integer user_id) {
+        return repo.getCount(user_id);
+    }
 }

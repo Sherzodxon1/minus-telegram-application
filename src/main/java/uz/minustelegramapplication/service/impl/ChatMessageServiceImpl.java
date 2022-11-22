@@ -10,7 +10,8 @@ import uz.minustelegramapplication.repo.ChatMessageRepository;
 import uz.minustelegramapplication.response.ResponseData;
 import uz.minustelegramapplication.service.ChatMessageService;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -21,12 +22,11 @@ public class ChatMessageServiceImpl implements ChatMessageService {
     private final ChatMessageMapper mapper;
 
     @Override
-    public ResponseEntity<ResponseData<ChatMessageDTO>> getByChatId(Integer chatId) {
-        Optional<ChatMessage> chatMessageOptional = repository.findByChatId(chatId);
-        if (chatMessageOptional.isEmpty()) {
-            throw new RuntimeException("User is not found !!!");
-        }
-        return ResponseData.success200(mapper.toDto(chatMessageOptional.get()));
+    public ResponseEntity<ResponseData<List<ChatMessageDTO>>> getChatId(Integer chatId) {
+        List<ChatMessage> list = repository.findByChatId(chatId);
+        List<ChatMessageDTO> dtoList = new ArrayList<>();
+        list.forEach(chatMessage -> dtoList.add(mapper.toDto(chatMessage)));
+        return ResponseData.success200(dtoList);
     }
 
 

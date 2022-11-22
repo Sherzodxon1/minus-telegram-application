@@ -4,9 +4,9 @@ import org.springframework.stereotype.Repository;
 import uz.minustelegramapplication.base.BaseRepository;
 import uz.minustelegramapplication.entity.ChatMessage;
 
-import java.util.Optional;
+import java.util.List;
 
 @Repository
 public interface ChatMessageRepository extends BaseRepository<ChatMessage> {
-    Optional<ChatMessage> findByChatId(Integer chatId);
+    List<ChatMessage> findByChatId(Integer chatId);
 }
