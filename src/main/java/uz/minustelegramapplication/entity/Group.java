@@ -27,9 +27,6 @@ public class Group extends BaseEntity {
     @Column(name = "user_name")
     private String username;
 
-    @Column(name = "link")
-    private String link;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id", referencedColumnName = "id", insertable = false, updatable = false)
     private User owner;
