@@ -50,8 +50,6 @@ public class GroupServiceImpl implements GroupService {
         if (GroupType.PRIVATE.equals(group.getGroupType())) {
 
             group.setUsername(null);
-            group.setLink(BaseURI.TME + "+" + group.getUuid().toString().substring(0, 16));
-
         } else {
             group.setUsername("@" + dto.getUsername());
 
@@ -72,11 +70,7 @@ public class GroupServiceImpl implements GroupService {
         if (GroupType.PRIVATE.equals(group.getGroupType())) {
 
             group.setUsername(null);
-            group.setLink(BaseURI.TME + "+" + group.getUuid().toString().substring(0, 16));
-
         } else {
-
-            group.setLink(null);
             group.setUsername("@" + dto.getUsername());
         }
 
