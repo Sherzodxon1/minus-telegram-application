@@ -93,4 +93,9 @@ public class GroupServiceImpl implements GroupService {
         return ResponseData.success200(mapper.toDto(group.get()));
     }
 
+    @Override
+    public Integer getCountGroup(Integer user_id) {
+        return repo.getGroup(user_id);
+    }
+
 }

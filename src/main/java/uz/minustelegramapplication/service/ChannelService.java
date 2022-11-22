@@ -21,4 +21,6 @@ public interface ChannelService {
     ResponseEntity<ResponseData<ChannelDTO>> getByName(String name);
 
     ResponseEntity<ResponseData<ChannelDTO>> delete(Integer id);
+
+    Integer getCount(Integer userId);
 }

@@ -20,4 +20,5 @@ public interface GroupService {
 
     ResponseEntity<ResponseData<GroupDTO>> getByName(String name);
 
+    Integer getCountGroup(Integer user_id);
 }
