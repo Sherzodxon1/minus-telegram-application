@@ -6,7 +6,6 @@ import lombok.ToString;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Getter
 @Setter
@@ -19,7 +18,10 @@ public class ContactCreateDTO {
     @NotBlank(message = "Last name is required !!!")
     private String lastName;
 
-    @NotNull(message = "Phone is required !!!")
+    @NotBlank(message = "Phone is required !!!")
     private String phone;
+
+    @NotNull(message = "User id is required !!!")
+    private Integer userId;
 
 }

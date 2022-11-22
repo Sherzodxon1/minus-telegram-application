@@ -22,7 +22,7 @@ public class Contact extends BaseEntity {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "phone", unique = true)
+    @Column(name = "phone")
     private String phone;
 
     @ManyToOne(fetch = FetchType.LAZY)

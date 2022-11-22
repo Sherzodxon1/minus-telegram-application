@@ -12,7 +12,8 @@ import javax.validation.constraints.NotNull;
 @ToString
 
 public class ContactUpdateDTO {
-    @NotNull(message = "User id is required!!!")
+
+    @NotNull(message = "Id is required!!!")
     private Integer id;
 
     @NotBlank(message = "First name is required !!!")
@@ -21,7 +22,7 @@ public class ContactUpdateDTO {
     @NotBlank(message = "Last name is required !!!")
     private String lastName;
 
-    @NotNull(message = "Phone is required !!!")
+    @NotBlank(message = "Phone is required !!!")
     private String phone;
 
 }

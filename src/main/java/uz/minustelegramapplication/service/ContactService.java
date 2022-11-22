@@ -17,6 +17,4 @@ public interface ContactService {
     ResponseEntity<ResponseData<ContactDTO>> getByPhone(String phone);
 
     ResponseEntity<ResponseData<ContactDTO>> getByName(String name);
-
-    void attachUser(List<Integer> ids, Integer userId);
 }

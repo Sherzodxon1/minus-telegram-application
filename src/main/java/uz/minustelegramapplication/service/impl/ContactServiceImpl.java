@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import uz.minustelegramapplication.dto.contact.ContactCreateDTO;
 import uz.minustelegramapplication.dto.contact.ContactDTO;
 import uz.minustelegramapplication.entity.Contact;
-import uz.minustelegramapplication.helper.Utils;
 import uz.minustelegramapplication.mapper.ContactMapper;
 import uz.minustelegramapplication.repo.ContactRepository;
 import uz.minustelegramapplication.response.ResponseData;
@@ -55,22 +54,6 @@ public class ContactServiceImpl implements ContactService {
     @Override
     public ResponseEntity<ResponseData<ContactDTO>> getByName(String name) {
         return null;
-    }
-
-    @Override
-    public void attachUser(List<Integer> ids, Integer userId) {
-        List<Contact> contacts = new ArrayList<>();
-        for (Integer id : ids) {
-            Optional<Contact> contactOptional = repo.findById(id);
-            if (contactOptional.isPresent()) {
-                Contact contact = contactOptional.get();
-                contact.setUserId(userId);
-                contacts.add(contact);
-            }
-        }
-        if (Utils.isPresent(contacts)) {
-            repo.saveAll(contacts);
-        }
     }
 
 }
