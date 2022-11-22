@@ -22,6 +22,7 @@ public interface ContactMapper {
     @Mapping(target = "firstName", source = "firstName")
     @Mapping(target = "lastName", source = "lastName")
     @Mapping(target = "phone", source = "phone")
+    @Mapping(target = "userId", source = "userId")
     @Mapping(target = "uuid", ignore = true)
     @Mapping(target = "active", ignore = true)
     Contact toEntity(ContactCreateDTO dto);

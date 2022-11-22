@@ -46,8 +46,6 @@ public class UserServiceImpl implements UserService {
     private final ChatMapper chatMapper;
 
     private final ChannelMapper channelMapper;
-
-    private final ContactService contactService;
     private final FileService fileService;
 
 
@@ -75,7 +73,6 @@ public class UserServiceImpl implements UserService {
         User user = mapper.toEntity(dto);
         repository.save(user);
         fileService.attachUser(dto.getFileIds(), user.getId());
-        contactService.attachUser(dto.getContactIds(), user.getId());
         return ResponseData.success201(mapper.toDto(user));
 
     }

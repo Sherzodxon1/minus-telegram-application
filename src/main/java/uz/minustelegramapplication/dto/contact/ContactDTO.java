@@ -19,7 +19,7 @@ public class ContactDTO {
 
     private String lastName;
 
-    private Integer phone;
+    private String phone;
 
     private boolean active;
 
