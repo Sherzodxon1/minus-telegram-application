@@ -22,7 +22,6 @@ import uz.minustelegramapplication.repo.ChatRepository;
 import uz.minustelegramapplication.repo.GroupRepository;
 import uz.minustelegramapplication.repo.UserRepository;
 import uz.minustelegramapplication.response.ResponseData;
-import uz.minustelegramapplication.service.ContactService;
 import uz.minustelegramapplication.service.FileService;
 import uz.minustelegramapplication.service.UserService;
 
@@ -59,11 +58,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseEntity<ResponseData<UserDTO>> get(Integer id) {
-        Optional<User> userOptional = repository.findById(id);
-        if (userOptional.isEmpty()) {
-            return  ResponseData.notFoundData("User is not found !!!");
+        Optional<User> user = repository.findById(id);
+        if (user.isEmpty()) {
+            return ResponseData.notFoundData("User is not found !!!");
+        } else if (!user.get().isActive()) {
+            return ResponseData.inActive("This User's status is inactive !!!");
         }
-        return ResponseData.success200(mapper.toDto(userOptional.get()));
+        fileService.getAllByUser(id);
+        return ResponseData.success200(mapper.toDto(user.get()));
 
     }
 
@@ -81,7 +83,9 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<ResponseData<UserDTO>> edit(UserUpdateDTO dto) {
         Optional<User> userOptional = repository.findById(dto.getId());
         if (userOptional.isEmpty()) {
-            return  ResponseData.notFoundData("User is not found !!!");
+            return ResponseData.notFoundData("User is not found !!!");
+        } else if (!userOptional.get().isActive()) {
+            return ResponseData.inActive("This User's status is inactive !!!");
         }
         User user = mapper.toEntity(userOptional.get(), dto);
         repository.save(user);
@@ -94,7 +98,7 @@ public class UserServiceImpl implements UserService {
 
         Optional<User> userOptional = repository.findById(id);
         if (userOptional.isEmpty()) {
-            return  ResponseData.notFoundData("User is not found !!!");
+            return ResponseData.notFoundData("User is not found !!!");
         }
         repository.delete(userOptional.get());
         return ResponseData.success200(true);
@@ -105,7 +109,7 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<ResponseData<UserDTO>> getByPhone(String phone) {
         Optional<User> userOptional = repository.findByPhone(phone);
         if (userOptional.isEmpty()) {
-            return  ResponseData.notFoundData("User is not found !!!");
+            return ResponseData.notFoundData("User is not found !!!");
         }
         return ResponseData.success200(mapper.toDto(userOptional.get()));
 
@@ -115,7 +119,7 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<ResponseData<UserDTO>> getByUserName(String name) {
         Optional<User> userOptional = repository.findByUserName(name);
         if (userOptional.isEmpty()) {
-            return  ResponseData.notFoundData("User is not found !!!");
+            return ResponseData.notFoundData("User is not found !!!");
         }
         return ResponseData.success200(mapper.toDto(userOptional.get()));
     }
@@ -125,7 +129,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> user = repository.findByPhoneAndPassword(phone, password);
         if (user.isEmpty()) {
 //            throw new RuntimeException("User is not found !!!");
-            return  ResponseData.notFoundData("User is not found !!!");
+            return ResponseData.notFoundData("User is not found !!!");
         }
         return ResponseData.success200(mapper.toDto(user.get()));
     }
