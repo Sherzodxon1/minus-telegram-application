@@ -7,10 +7,12 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import uz.minustelegramapplication.dto.file.UserFileDTO;
+import uz.minustelegramapplication.entity.User;
 import uz.minustelegramapplication.entity.UserFile;
 import uz.minustelegramapplication.helper.Utils;
 import uz.minustelegramapplication.mapper.UserFileMapper;
 import uz.minustelegramapplication.repo.UserFileRepo;
+import uz.minustelegramapplication.repo.UserRepository;
 import uz.minustelegramapplication.response.ResponseData;
 import uz.minustelegramapplication.service.FileService;
 
@@ -32,12 +34,25 @@ public class FileServiceImpl implements FileService {
 
     private final UserFileRepo repo;
     private final UserFileMapper mapper;
+    private final UserRepository userRepository;
 
     private final Path root = Paths.get("D:\\Spring\\UserFiles");
 
     @Override
     public ResponseEntity<ResponseData<List<UserFileDTO>>> getAllByUser(Integer userId) {
+
+        Optional<User> user = userRepository.findById(userId);
+
+        if (user.isEmpty()) {
+            return ResponseData.notFoundData("User is not found !!!");
+        }
+
         List<UserFile> list = repo.findAllByUserId(userId);
+
+        if (Utils.isEmpty(list)) {
+            return ResponseData.notFoundData("Files are not found !!!");
+        }
+
         List<UserFileDTO> responseList = new ArrayList<>();
         for (UserFile file : list) {
             UserFileDTO dto = mapper.toDto(file);
@@ -50,7 +65,7 @@ public class FileServiceImpl implements FileService {
     public ResponseEntity<ResponseData<UserFileDTO>> upload(MultipartFile file) {
         final String fileOriginalName = file.getOriginalFilename();
         if (!StringUtils.hasText(fileOriginalName)) {
-            return  ResponseData.notFoundData("File name should be null !!!");
+            return ResponseData.notFoundData("File name should be null !!!");
         }
 
         String format = fileOriginalName.split("\\.")[1];
@@ -68,6 +83,7 @@ public class FileServiceImpl implements FileService {
         userFile.setOriginalName(fileOriginalName);
         userFile.setSize(file.getSize());
         userFile.setMimeType(file.getContentType());
+//        userFile.setUserId(???????????);
         repo.save(userFile);
 
         return ResponseData.success201(mapper.toDto(userFile));
