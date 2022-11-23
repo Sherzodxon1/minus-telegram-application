@@ -24,7 +24,4 @@ public class ChannelUpdateDTO {
     @NotBlank(message = "Channel type is required !!!")
     private String channelTypeName;
 
-    @NotNull(message = "User id is required !!!")
-    private Integer ownerId;
-
 }

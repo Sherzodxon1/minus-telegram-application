@@ -24,7 +24,4 @@ public class GroupUpdateDTO {
     @NotBlank(message = "Group type is required !!!")
     private String groupTypeName;
 
-    @NotNull(message = "User id is required !!!")
-    private Integer ownerId;
-
 }
