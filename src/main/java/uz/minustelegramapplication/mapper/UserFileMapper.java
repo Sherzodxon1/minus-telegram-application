@@ -14,5 +14,6 @@ public interface UserFileMapper {
     @Mapping(target = "originalName", source = "originalName")
     @Mapping(target = "size", source = "size")
     @Mapping(target = "mimeType", source = "mimeType")
+    @Mapping(target = "userId", source = "userId")
     UserFileDTO toDto(UserFile file);
 }

@@ -19,6 +19,8 @@ public class UserFileDTO {
 
     private String mimeType;
 
+    private Integer userId;
+
     private boolean active;
 
 }
