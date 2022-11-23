@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "contacts")
+@Table(name = "contacts", uniqueConstraints = {@UniqueConstraint(name = "UniquePhoneAndUser", columnNames = {"phone", "user_id"})})
 public class Contact extends BaseEntity {
 
     @Column(name = "first_name")

@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 import uz.minustelegramapplication.dto.contact.ContactCreateDTO;
 import uz.minustelegramapplication.dto.contact.ContactDTO;
 import uz.minustelegramapplication.entity.Contact;
+import uz.minustelegramapplication.entity.User;
 import uz.minustelegramapplication.mapper.ContactMapper;
 import uz.minustelegramapplication.repo.ContactRepository;
+import uz.minustelegramapplication.repo.UserRepository;
 import uz.minustelegramapplication.response.ResponseData;
 import uz.minustelegramapplication.service.ContactService;
 
@@ -21,6 +23,7 @@ public class ContactServiceImpl implements ContactService {
 
     private final ContactRepository repo;
     private final ContactMapper mapper;
+    private final UserRepository userRepository;
 
     @Override
     public ResponseEntity<ResponseData<List<ContactDTO>>> getAll() {
@@ -34,7 +37,7 @@ public class ContactServiceImpl implements ContactService {
     public ResponseEntity<ResponseData<ContactDTO>> get(Integer id) {
         Optional<Contact> contact = repo.findById(id);
         if (contact.isEmpty()) {
-            return  ResponseData.notFoundData("Contact is not found !!!");
+            return ResponseData.notFoundData("Contact is not found !!!");
         }
         return ResponseData.success200(mapper.toDto(contact.get()));
     }
@@ -42,6 +45,11 @@ public class ContactServiceImpl implements ContactService {
     @Override
     public ResponseEntity<ResponseData<ContactDTO>> add(ContactCreateDTO dto) {
         Contact contact = mapper.toEntity(dto);
+        Optional<User> user = userRepository.findById(dto.getUserId());
+
+        if (user.isEmpty()) {
+            return ResponseData.notFoundData("User is not found !!!");
+        }
         repo.save(contact);
         return ResponseData.success201(mapper.toDto(contact));
     }
