@@ -52,6 +52,8 @@ public class ChannelServiceImpl implements ChannelService {
 
         if (user.isEmpty()) {
             return ResponseData.notFoundData("User is not found !!!");
+        } else if (!user.get().isActive()) {
+            return ResponseData.inActive("This User's status is inactive !!!");
         }
 
         if (ChannelType.PRIVATE.equals(channel.getChannelType())) {

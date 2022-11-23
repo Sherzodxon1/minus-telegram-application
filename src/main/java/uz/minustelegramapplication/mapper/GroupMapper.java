@@ -39,8 +39,8 @@ public interface GroupMapper {
     @Mapping(target = "groupType", source = "groupTypeName", qualifiedByName = "mapGroupType")
     Group toEntity(GroupCreateDTO dto);
 
-    @Mapping(target = "name",  ignore = true)
-    @Mapping(target = "groupType",  ignore = true)
+    @Mapping(target = "name", source = "dto.name")
+    @Mapping(target = "groupType", source = "dto.groupTypeName", qualifiedByName = "mapGroupType")
     @Mapping(target = "username", source = "dto.username")
     @Mapping(target = "ownerId", ignore = true)
     Group toEntity(@MappingTarget Group group, GroupUpdateDTO dto);

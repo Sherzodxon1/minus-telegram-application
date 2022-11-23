@@ -56,6 +56,10 @@ public class ResponseData<T> {
         return new ResponseEntity<>(new ResponseData<>(errorMessage), HttpStatus.NOT_FOUND);
     }
 
+    public static <T> ResponseEntity<ResponseData<T>> inActive(String errorMessage) {
+        return new ResponseEntity<>(new ResponseData<>(errorMessage), HttpStatus.NOT_FOUND);
+    }
+
     public static <T> ResponseEntity<ResponseData<T>> alreadyExists(String errorMessage) {
         return new ResponseEntity<>(new ResponseData<>(errorMessage), HttpStatus.CONFLICT);
     }

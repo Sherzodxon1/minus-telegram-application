@@ -3,14 +3,15 @@ package uz.minustelegramapplication.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import uz.minustelegramapplication.base.BaseURI;
 import uz.minustelegramapplication.dto.group.GroupCreateDTO;
 import uz.minustelegramapplication.dto.group.GroupDTO;
 import uz.minustelegramapplication.dto.group.GroupUpdateDTO;
 import uz.minustelegramapplication.entity.Group;
+import uz.minustelegramapplication.entity.User;
 import uz.minustelegramapplication.enums.GroupType;
 import uz.minustelegramapplication.mapper.GroupMapper;
 import uz.minustelegramapplication.repo.GroupRepository;
+import uz.minustelegramapplication.repo.UserRepository;
 import uz.minustelegramapplication.response.ResponseData;
 import uz.minustelegramapplication.service.GroupService;
 
@@ -25,6 +26,8 @@ public class GroupServiceImpl implements GroupService {
     private final GroupRepository repo;
 
     private final GroupMapper mapper;
+
+    private final UserRepository userRepository;
 
     @Override
     public ResponseEntity<ResponseData<List<GroupDTO>>> getAll() {
@@ -46,6 +49,14 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public ResponseEntity<ResponseData<GroupDTO>> add(GroupCreateDTO dto) {
         Group group = mapper.toEntity(dto);
+
+        Optional<User> user = userRepository.findById(dto.getOwnerId());
+
+        if (user.isEmpty()) {
+            return ResponseData.notFoundData("User is not found !!!");
+        } else if (!user.get().isActive()) {
+            return ResponseData.inActive("This User's status is inactive !!!");
+        }
 
         if (GroupType.PRIVATE.equals(group.getGroupType())) {
 

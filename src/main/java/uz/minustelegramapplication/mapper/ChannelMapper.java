@@ -43,7 +43,7 @@ public interface ChannelMapper {
     @Mapping(target = "name", source = "dto.name")
     @Mapping(target = "channelType", source = "dto.channelTypeName", qualifiedByName = "mapChannelType")
     @Mapping(target = "username", source = "dto.username")
-    @Mapping(target = "ownerId", source = "dto.ownerId")
+    @Mapping(target = "ownerId", ignore = true)
     Channel toEntity(@MappingTarget Channel channel, ChannelUpdateDTO dto);
 
     @Mapping(target = "name", ignore = true)
