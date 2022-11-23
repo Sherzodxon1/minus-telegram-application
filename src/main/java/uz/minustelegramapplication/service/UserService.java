@@ -30,8 +30,8 @@ public interface UserService {
 
     ResponseEntity<ResponseData<UserDTO>> getLogin(String phone, String password);
 
-    ResponseEntity<ResponseData<List<GroupDTO>>> getByUserId(Integer ownerId);
+    ResponseEntity<ResponseData<List<GroupDTO>>> getByUserId(Integer id);
     ResponseEntity<ResponseData<List<ChatDTO>>> findByOwnerId(Integer id);
 
-    ResponseEntity<ResponseData<List<ChannelDTO>>> getUserId(Integer userId);
+    ResponseEntity<ResponseData<List<ChannelDTO>>> getUserId(Integer id);
 }

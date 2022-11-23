@@ -14,7 +14,6 @@ public interface UserMapper {
     @Mapping(target = "firstName", source = "firstName")
     @Mapping(target = "lastName", source = "lastName")
     @Mapping(target = "phone", source = "phone")
-    @Mapping(target = "password", source = "password")
     @Mapping(target = "uuid", source = "uuid")
     @Mapping(target = "bio", source = "bio")
     UserDTO toDto(User user);
@@ -23,7 +22,6 @@ public interface UserMapper {
     @Mapping(target = "firstName", source = "firstName")
     @Mapping(target = "lastName", source = "lastName")
     @Mapping(target = "phone", source = "phone")
-    @Mapping(target = "password", source = "password")
     @Mapping(target = "uuid", ignore = true)
     @Mapping(target = "bio", source = "bio")
     @Mapping(target = "active",ignore = true)
@@ -32,7 +30,6 @@ public interface UserMapper {
     @Mapping(target = "firstName", source = "dto.firstName")
     @Mapping(target = "lastName", source = "dto.lastName")
     @Mapping(target = "phone", source = "dto.phone")
-    @Mapping(target = "password", source = "dto.password")
 
     User toEntity(@MappingTarget User user, UserUpdateDTO dto);
 

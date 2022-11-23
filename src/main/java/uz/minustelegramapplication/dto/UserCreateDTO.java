@@ -25,9 +25,6 @@ public class UserCreateDTO {
     @NotBlank(message = "User name is required !!!")
     private String userName;
 
-    @NotNull(message = "Password is required !!!")
-    private String password;
-
     @NotBlank(message = "bio is required !!!")
     private String bio;
 

@@ -131,8 +131,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<ResponseData<List<GroupDTO>>> getByUserId(Integer ownerId) {
-        List<Group> list = groupRepository.findByOwnerId(ownerId);
+    public ResponseEntity<ResponseData<List<GroupDTO>>> getByUserId(Integer id) {
+        List<Group> list = groupRepository.findByOwnerId(id);
         List<GroupDTO> dtoList = new ArrayList<>();
         list.forEach(group -> dtoList.add(groupMapper.toDto(group)));
         return ResponseData.success200(dtoList);
@@ -149,8 +149,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<ResponseData<List<ChannelDTO>>> getUserId(Integer userId) {
-        List<Channel> list = channelRepository.findByOwnerId(userId);
+    public ResponseEntity<ResponseData<List<ChannelDTO>>> getUserId(Integer id) {
+        List<Channel> list = channelRepository.findByOwnerId(id);
         List<ChannelDTO> dtoList = new ArrayList<>();
         list.forEach(channel -> dtoList.add(channelMapper.toDto(channel)));
         return ResponseData.success200(dtoList);
