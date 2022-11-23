@@ -47,18 +47,18 @@ public class UserController {
     public ResponseEntity<ResponseData<UserDTO>> searchByUserName(@PathVariable(value = "name") String name) {
         return service.getByUserName(name);
     }
-    @GetMapping(BaseURI.GROUP_BY_ID + "/{groupById}")
-    public ResponseEntity<ResponseData<List<GroupDTO>>> getUserId(@PathVariable(value = "groupById") Integer ownerId) {
-        return service.getByUserId(ownerId);
+    @GetMapping(BaseURI.GROUP_BY_ID + "/{id}")
+    public ResponseEntity<ResponseData<List<GroupDTO>>> groupById(@PathVariable(value = "id") Integer id) {
+        return service.getByUserId(id);
     }
 
-    @GetMapping(BaseURI.CHAT_BY_ID + "/{chatById}")
-    public ResponseEntity<ResponseData<List<ChatDTO>>> getOwnerId(@PathVariable(value = "chatById") Integer id) {
+    @GetMapping(BaseURI.CHAT_BY_ID + "/{id}")
+    public ResponseEntity<ResponseData<List<ChatDTO>>> chatById(@PathVariable(value = "id") Integer id) {
         return service.findByOwnerId(id);
     }
 
-    @GetMapping(BaseURI.CHANNEL_BY_ID + "/{channelByUserId}")
-    public ResponseEntity<ResponseData<List<ChannelDTO>>> getByOwnerId(@PathVariable(value = "channelByUserId") Integer ownerId) {
-        return service.getUserId(ownerId);
+    @GetMapping(BaseURI.CHANNEL_BY_ID + "/{id}")
+    public ResponseEntity<ResponseData<List<ChannelDTO>>> channelById(@PathVariable(value = "id") Integer id) {
+        return service.getUserId(id);
     }
 }

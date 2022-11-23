@@ -16,7 +16,7 @@ public interface BaseURI {
 
     String FILE = "/file";
     String GET = "/get";
-    String ALL = "/all";
+    String ALL = "/all    (for only creator)";
     String ADD = "/add";
     String EDIT = "/edit";
     String DELETE = "/delete";
@@ -32,10 +32,10 @@ public interface BaseURI {
 
 
 
-    String GROUP_BY_ID = "/user_id";
-    String CHAT_BY_ID = "/id";
+    String GROUP_BY_ID = "/groupById";
+    String CHAT_BY_ID = "/chatById";
 
-    String CHANNEL_BY_ID = "/owner_id";
+    String CHANNEL_BY_ID = "/channelById";
 }
 
 

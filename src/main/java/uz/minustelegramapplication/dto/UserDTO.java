@@ -23,8 +23,6 @@ public class UserDTO {
 
     private String userName;
 
-    private Integer password;
-
     private boolean active;
 
     private String bio;

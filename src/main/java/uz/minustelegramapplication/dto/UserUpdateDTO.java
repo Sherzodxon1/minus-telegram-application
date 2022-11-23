@@ -27,6 +27,4 @@ public class UserUpdateDTO {
     @NotBlank(message = "User name is required !!!")
     private String userName;
 
-    @NotNull(message = "Password is required !!!")
-    private String password;
 }
