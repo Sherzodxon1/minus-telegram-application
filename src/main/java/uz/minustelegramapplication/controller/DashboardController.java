@@ -17,12 +17,12 @@ public class DashboardController {
     private final DashboardService service;
 
     @GetMapping(BaseURI.CHANNEL)
-    public ResponseEntity<ResponseData<Integer>> getCount(@RequestParam(value = "user_id")Integer user_id){
-        return service.getCount(user_id);
+    public ResponseEntity<ResponseData<Integer>> getCountChannel(@RequestParam(value = "id") Integer id) {
+        return service.getChannel(id);
     }
 
     @GetMapping(BaseURI.GROUP)
-    public ResponseEntity<ResponseData<Integer>> getCountGroup(@RequestParam(value = "user_id")Integer user_id){
-        return service.getGroup(user_id);
+    public ResponseEntity<ResponseData<Integer>> getCountGroup(@RequestParam(value = "id") Integer id) {
+        return service.getGroup(id);
     }
 }

@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity;
 import uz.minustelegramapplication.response.ResponseData;
 
 public interface DashboardService {
-    ResponseEntity<ResponseData<Integer>> getCount(Integer userId);
+    ResponseEntity<ResponseData<Integer>> getChannel(Integer id);
 
-    ResponseEntity<ResponseData<Integer>> getGroup(Integer user_id);
+    ResponseEntity<ResponseData<Integer>> getGroup(Integer id);
 }
