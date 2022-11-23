@@ -45,6 +45,8 @@ public class FileServiceImpl implements FileService {
 
         if (user.isEmpty()) {
             return ResponseData.notFoundData("User is not found !!!");
+        } else if (!user.get().isActive()) {
+            return ResponseData.inActive("This User's status is inactive !!!");
         }
 
         List<UserFile> list = repo.findAllByUserId(userId);

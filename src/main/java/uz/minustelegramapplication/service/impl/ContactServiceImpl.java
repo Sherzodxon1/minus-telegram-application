@@ -49,7 +49,10 @@ public class ContactServiceImpl implements ContactService {
 
         if (user.isEmpty()) {
             return ResponseData.notFoundData("User is not found !!!");
+        } else if (!user.get().isActive()) {
+            return ResponseData.inActive("This User's status is inactive !!!");
         }
+
         repo.save(contact);
         return ResponseData.success201(mapper.toDto(contact));
     }

@@ -33,7 +33,7 @@ public class ChatServiceImpl implements ChatService {
     public ResponseEntity<ResponseData<ChatDTO>> get(Integer id) {
         Optional<Chat> chat = repository.findById(id);
         if (chat.isEmpty()) {
-            return  ResponseData.notFoundData("Group is not found !!!");
+            return  ResponseData.notFoundData("Chat is not found !!!");
         }
         return ResponseData.success200(mapper.toDto(chat.get()));
     }
